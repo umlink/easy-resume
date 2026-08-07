@@ -1,0 +1,175 @@
+generator client {
+  provider        = "prisma-client-js"
+  relationMode    = "prisma"
+  previewFeatures = ["prismaSchemaFolder"]
+}
+
+generator docs {
+  provider = "node node_modules/prisma-docs-generator"
+  output   = "./docs"
+}
+
+datasource db {
+  provider     = "mysql"
+  url          = env("DATABASE_URL")
+  relationMode = "prisma"
+}
+
+model User {
+  id        BigInt   @id @unique(map: "id") @default(autoincrement())
+  email     String   @db.VarChar(64)
+  avatar    String   @db.VarChar(128)
+  username  String   @db.VarChar(32)
+  password  String   @db.VarChar(128)
+  disabled  Int      @default(0) @db.TinyInt
+  roles     Json
+  createdAt DateTime @default(dbgenerated("NOW()")) @map("created_at") @db.DateTime
+  updatedAt DateTime @default(dbgenerated("NOW() ON UPDATE NOW()")) @map("updated_at") @db.Timestamp()
+
+  @@map("user")
+}
+
+/// This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
+model Vip {
+  userId      Int       @id @unique(map: "vip_user_id_uindex") @map("user_id")
+  vipTypeId   Int       @map("vip_type_id")
+  start_time  DateTime  @db.DateTime(0)
+  expire_time DateTime? @db.DateTime(0)
+
+  @@index([vipTypeId], map: "vip_vip_type_id_index")
+  @@map("vip")
+}
+
+/// This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
+model VipType {
+  id            Int      @id @unique(map: "id") @default(autoincrement())
+  tilte         String   @db.VarChar(64)
+  description   String   @db.VarChar(512)
+  equity        Json?
+  price         Decimal  @db.Decimal(10, 0)
+  originalPrice Decimal? @map("original_price") @db.Decimal(10, 0)
+  duration      Int
+  sellType      Int      @default(0) @map("sell_type")
+  disabled      Int      @default(0) @db.TinyInt
+  createdAt     DateTime @default(dbgenerated("NOW()")) @map("created_at") @db.DateTime
+  updatedAt     DateTime @default(dbgenerated("NOW() ON UPDATE NOW()")) @map("updated_at") @db.Timestamp()
+
+  @@map("vip_type")
+}
+
+/// This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
+model VipExchangeCode {
+  id         Int      @id @unique(map: "id") @default(autoincrement())
+  code       String   @db.VarChar(32)
+  vipTypeTd  Int      @map("vip_type_id")
+  startTime  DateTime @map("start_time") @db.DateTime(0)
+  expireTime DateTime @map("expire_time") @db.DateTime(0)
+  creatorId  Int      @map("creator_id")
+  exchanged  Int      @default(0) @db.TinyInt
+  createdAt  DateTime @default(dbgenerated("NOW()")) @map("created_at") @db.DateTime
+  updatedAt  DateTime @default(dbgenerated("NOW() ON UPDATE NOW()")) @map("updated_at") @db.Timestamp()
+
+  @@index([id], map: "vip_exchange_code_id_index")
+  @@map("vip_exchange_code")
+}
+
+/// This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
+model InviteCode {
+  code       String    @id @unique(map: "code") @db.VarChar(32)
+  userId     Int       @map("user_id")
+  expireTime DateTime? @map("expire_time") @db.DateTime(0)
+  createdAt  DateTime? @map("created_at") @db.DateTime(0)
+  updatedAt  DateTime? @map("updated_at") @db.DateTime(0)
+
+  @@index([userId], map: "invite_code_user_id_index")
+  @@map("invite_code")
+}
+
+/// This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
+model InviteUser {
+  id          Int      @id @default(autoincrement())
+  inviteCode  String   @map("invite_code") @db.VarChar(32)
+  initiatorId Int      @map("initiator_id")
+  receiverId  Int      @map("receiver_id")
+  createdAt   DateTime @default(dbgenerated("NOW()")) @map("created_at") @db.DateTime
+  updatedAt   DateTime @default(dbgenerated("NOW() ON UPDATE NOW()")) @map("updated_at") @db.Timestamp()
+
+  @@index([initiatorId], map: "invite_user_initiator_id_index")
+  @@index([inviteCode], map: "invite_user_invite_code_index")
+  @@index([receiverId], map: "invite_user_receiver_id_index")
+  @@map("invite_user")
+}
+
+/// This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
+model resume {
+  id          Int      @id @unique(map: "id")
+  title       String   @db.VarChar(64)
+  content     Json
+  userId      Int      @map("user_id")
+  templateId  Int?     @map("template_id")
+  themeColor  String   @map("theme_color") @db.VarChar(10)
+  isPublic    Int      @default(0) @map("is_public") @db.TinyInt
+  exportCount Int      @map("export_count")
+  createdAt   DateTime @default(dbgenerated("NOW()")) @map("created_at") @db.DateTime
+  updatedAt   DateTime @default(dbgenerated("NOW() ON UPDATE NOW()")) @map("updated_at") @db.Timestamp()
+
+  @@index([templateId], map: "resume_template_id_index")
+  @@index([userId], map: "resume_user_id_index")
+}
+
+/// This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
+model ResumeTemplate {
+  id        Int      @id @unique(map: "id") @default(autoincrement())
+  code      String   @unique(map: "code") @db.VarChar(32)
+  title     String   @db.VarChar(64)
+  content   Json     @map("content")
+  headerImg String?  @map("header_img") @db.VarChar(128)
+  creatorId Int      @map("creator_id")
+  useCount  Int      @default(0) @map("use_count")
+  isVip     Int      @default(0) @map("is_vip") @db.TinyInt
+  createdAt DateTime @default(dbgenerated("NOW()")) @map("created_at") @db.DateTime
+  updatedAt DateTime @default(dbgenerated("NOW() ON UPDATE NOW()")) @map("updated_at") @db.Timestamp()
+
+  @@index([creatorId], map: "resume_template_creator_id_index")
+  @@map("resume_template")
+}
+
+/// This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
+model order {
+  id          String    @id @unique(map: "id") @db.VarChar(32)
+  userId      Int       @map("user_id")
+  price       Decimal   @db.Decimal(10, 0)
+  payType     Int?      @map("pay_type")
+  orderStatus Int       @default(0) @map("order_status")
+  orderDesc   String?   @map("order_desc") @db.VarChar(512)
+  overtime    DateTime? @db.DateTime(0)
+  createdAt   DateTime  @default(dbgenerated("NOW()")) @map("created_at") @db.DateTime
+  updatedAt   DateTime  @default(dbgenerated("NOW() ON UPDATE NOW()")) @map("updated_at") @db.Timestamp()
+}
+
+/// This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
+model permission {
+  id        Int      @id @default(autoincrement())
+  role_id   Int      @map("role_id")
+  name      String   @db.VarChar(32)
+  enum      String   @db.VarChar(32)
+  desc      String   @db.VarChar(128)
+  creatorId Int      @map("creator_id")
+  createdAt DateTime @default(dbgenerated("NOW()")) @map("created_at") @db.DateTime(0)
+  updatedAt DateTime @default(dbgenerated("NOW() ON UPDATE NOW()")) @map("updated_at") @db.Timestamp(0)
+
+  @@index([id], map: "permission_id_index")
+  @@index([role_id], map: "permission_role_id_index")
+}
+
+model role {
+  id        Int      @id @default(autoincrement())
+  enum      String   @unique(map: "role_enum_uindex") @db.VarChar(32)
+  name      String   @db.VarChar(64)
+  desc      String   @db.VarChar(512)
+  creatorId Int      @map("creator_id")
+  createdAt DateTime @default(dbgenerated("NOW()")) @map("created_at") @db.DateTime(0)
+  updatedAt DateTime @default(dbgenerated("NOW() ON UPDATE NOW()")) @map("updated_at") @db.Timestamp(0)
+
+  @@index([id], map: "role_id_index")
+}

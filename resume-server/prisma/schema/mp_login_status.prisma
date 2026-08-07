@@ -1,0 +1,10 @@
+model MpLoginStatus {
+  id        BigInt   @id @default(autoincrement())
+  openId    String   @map("open_id") @db.VarChar(128)
+  status    Int      @default(0)
+  createdAt DateTime @default(now()) @map("created_at") @db.DateTime(0)
+  updatedAt DateTime @default(now()) @map("updated_at") @db.Timestamp(0)
+
+  @@index([openId], map: "mp_login_status_open_id_index")
+  @@map("mp_login_status")
+}

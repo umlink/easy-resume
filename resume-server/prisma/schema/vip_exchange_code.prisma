@@ -1,0 +1,15 @@
+/// This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
+model VipExchangeCode {
+  id         Int      @id @unique(map: "id") @default(autoincrement())
+  code       String   @db.VarChar(32)
+  vipTypeTd  Int      @map("vip_type_id")
+  startTime  DateTime @map("start_time") @db.DateTime(0)
+  expireTime DateTime @map("expire_time") @db.DateTime(0)
+  creatorId  Int      @map("creator_id")
+  exchanged  Int      @default(0) @db.TinyInt
+  createdAt  DateTime @default(now()) @map("created_at") @db.DateTime(0)
+  updatedAt  DateTime @default(now()) @map("updated_at") @db.Timestamp(0)
+
+  @@index([id], map: "vip_exchange_code_id_index")
+  @@map("vip_exchange_code")
+}

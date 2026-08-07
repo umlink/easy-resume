@@ -1,0 +1,488 @@
+html {
+  font-family: 'fontFamily.sans', ui-sans-serif, system-ui, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial,
+    Noto Sans, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', Segoe UI Symbol, 'Noto Sans CJK SC',
+    'WenQuanYi Micro Hei', 'Noto Color Emoji' !important;
+  scroll-behavior: smooth;
+}
+.ql-container {
+  font-family: 'fontFamily.sans', ui-sans-serif, system-ui, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial,
+    Noto Sans, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', Segoe UI Symbol, 'Noto Sans CJK SC',
+    'WenQuanYi Micro Hei', 'Noto Color Emoji' !important;
+}
+
+body {
+  --primary-color: 192, 38, 211;
+  --vp-c-brand-1: #00a98e;
+  --vp-c-brand-next: #009ff7;
+  overflow-y: scroll;
+}
+
+.no-scrollbar {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+.g-block-bg {
+  background: linear-gradient(-90deg, #6d6d6d10 1px, transparent 0), linear-gradient(#6d6d6d10 1px, transparent 0),
+    linear-gradient(-90deg, #6d6d6d10 1px, transparent 0), linear-gradient(#6d6d6d10 1px, transparent 0),
+    linear-gradient(transparent 6px, transparent 0, transparent 156px, transparent 0),
+    linear-gradient(-90deg, #6d6d6d10 1px, transparent 0),
+    linear-gradient(-90deg, transparent 6px, transparent 0, transparent 156px, transparent 0),
+    linear-gradient(#6d6d6d10 1px, transparent 0), 0 0;
+  background-size: 20px 20px, 20px 20px, 100px 100px, 100px 100px, 100px 100px, 100px 100px, 100px 100px, 100px 100px;
+}
+
+@keyframes rainbow {
+  0% {
+    --vp-c-brand-1: #00a98e;
+    --vp-c-brand-next: #009ff7;
+  }
+
+  1.25% {
+    --vp-c-brand-1: #00a996;
+    --vp-c-brand-next: #009dfa;
+  }
+
+  2.5% {
+    --vp-c-brand-1: #00a99f;
+    --vp-c-brand-next: #009bfc;
+  }
+
+  3.75% {
+    --vp-c-brand-1: #00a9a7;
+    --vp-c-brand-next: #0098fd;
+  }
+
+  5% {
+    --vp-c-brand-1: #00a9b0;
+    --vp-c-brand-next: #0096fd;
+  }
+
+  6.25% {
+    --vp-c-brand-1: #00a9b8;
+    --vp-c-brand-next: #0093fd;
+  }
+
+  7.5% {
+    --vp-c-brand-1: #00a9c0;
+    --vp-c-brand-next: #2e90fc;
+  }
+
+  8.75% {
+    --vp-c-brand-1: #00a8c7;
+    --vp-c-brand-next: #4d8dfa;
+  }
+
+  10% {
+    --vp-c-brand-1: #00a8cf;
+    --vp-c-brand-next: #638af8;
+  }
+
+  11.25% {
+    --vp-c-brand-1: #00a7d5;
+    --vp-c-brand-next: #7587f5;
+  }
+
+  12.5% {
+    --vp-c-brand-1: #00a6dc;
+    --vp-c-brand-next: #8583f1;
+  }
+
+  13.75% {
+    --vp-c-brand-1: #00a6e2;
+    --vp-c-brand-next: #9280ed;
+  }
+
+  15% {
+    --vp-c-brand-1: #00a4e7;
+    --vp-c-brand-next: #9f7ce9;
+  }
+
+  16.25% {
+    --vp-c-brand-1: #00a3ec;
+    --vp-c-brand-next: #aa78e3;
+  }
+
+  17.5% {
+    --vp-c-brand-1: #00a2f1;
+    --vp-c-brand-next: #b574dd;
+  }
+
+  18.75% {
+    --vp-c-brand-1: #00a0f4;
+    --vp-c-brand-next: #be71d7;
+  }
+
+  20% {
+    --vp-c-brand-1: #009ff7;
+    --vp-c-brand-next: #c76dd1;
+  }
+
+  21.25% {
+    --vp-c-brand-1: #009dfa;
+    --vp-c-brand-next: #cf69c9;
+  }
+
+  22.5% {
+    --vp-c-brand-1: #009bfc;
+    --vp-c-brand-next: #d566c2;
+  }
+
+  23.75% {
+    --vp-c-brand-1: #0098fd;
+    --vp-c-brand-next: #dc63ba;
+  }
+
+  25% {
+    --vp-c-brand-1: #0096fd;
+    --vp-c-brand-next: #e160b3;
+  }
+
+  26.25% {
+    --vp-c-brand-1: #0093fd;
+    --vp-c-brand-next: #e65eab;
+  }
+
+  27.5% {
+    --vp-c-brand-1: #2e90fc;
+    --vp-c-brand-next: #e95ca2;
+  }
+
+  28.75% {
+    --vp-c-brand-1: #4d8dfa;
+    --vp-c-brand-next: #ed5a9a;
+  }
+
+  30% {
+    --vp-c-brand-1: #638af8;
+    --vp-c-brand-next: #ef5992;
+  }
+
+  31.25% {
+    --vp-c-brand-1: #7587f5;
+    --vp-c-brand-next: #f15989;
+  }
+
+  32.5% {
+    --vp-c-brand-1: #8583f1;
+    --vp-c-brand-next: #f25981;
+  }
+
+  33.75% {
+    --vp-c-brand-1: #9280ed;
+    --vp-c-brand-next: #f25a79;
+  }
+
+  35% {
+    --vp-c-brand-1: #9f7ce9;
+    --vp-c-brand-next: #f25c71;
+  }
+
+  36.25% {
+    --vp-c-brand-1: #aa78e3;
+    --vp-c-brand-next: #f15e69;
+  }
+
+  37.5% {
+    --vp-c-brand-1: #b574dd;
+    --vp-c-brand-next: #ef6061;
+  }
+
+  38.75% {
+    --vp-c-brand-1: #be71d7;
+    --vp-c-brand-next: #ed635a;
+  }
+
+  40% {
+    --vp-c-brand-1: #c76dd1;
+    --vp-c-brand-next: #eb6552;
+  }
+
+  41.25% {
+    --vp-c-brand-1: #cf69c9;
+    --vp-c-brand-next: #e8694b;
+  }
+
+  42.5% {
+    --vp-c-brand-1: #d566c2;
+    --vp-c-brand-next: #e46c44;
+  }
+
+  43.75% {
+    --vp-c-brand-1: #dc63ba;
+    --vp-c-brand-next: #e06f3d;
+  }
+
+  45% {
+    --vp-c-brand-1: #e160b3;
+    --vp-c-brand-next: #db7336;
+  }
+
+  46.25% {
+    --vp-c-brand-1: #e65eab;
+    --vp-c-brand-next: #d77630;
+  }
+
+  47.5% {
+    --vp-c-brand-1: #e95ca2;
+    --vp-c-brand-next: #d17a2a;
+  }
+
+  48.75% {
+    --vp-c-brand-1: #ed5a9a;
+    --vp-c-brand-next: #cc7d24;
+  }
+
+  50% {
+    --vp-c-brand-1: #ef5992;
+    --vp-c-brand-next: #c6811e;
+  }
+
+  51.25% {
+    --vp-c-brand-1: #f15989;
+    --vp-c-brand-next: #bf8418;
+  }
+
+  52.5% {
+    --vp-c-brand-1: #f25981;
+    --vp-c-brand-next: #b98713;
+  }
+
+  53.75% {
+    --vp-c-brand-1: #f25a79;
+    --vp-c-brand-next: #b28a0f;
+  }
+
+  55% {
+    --vp-c-brand-1: #f25c71;
+    --vp-c-brand-next: #ab8d0c;
+  }
+
+  56.25% {
+    --vp-c-brand-1: #f15e69;
+    --vp-c-brand-next: #a3900b;
+  }
+
+  57.5% {
+    --vp-c-brand-1: #ef6061;
+    --vp-c-brand-next: #9c920d;
+  }
+
+  58.75% {
+    --vp-c-brand-1: #ed635a;
+    --vp-c-brand-next: #949510;
+  }
+
+  60% {
+    --vp-c-brand-1: #eb6552;
+    --vp-c-brand-next: #8b9715;
+  }
+
+  61.25% {
+    --vp-c-brand-1: #e8694b;
+    --vp-c-brand-next: #83991b;
+  }
+
+  62.5% {
+    --vp-c-brand-1: #e46c44;
+    --vp-c-brand-next: #7a9b21;
+  }
+
+  63.75% {
+    --vp-c-brand-1: #e06f3d;
+    --vp-c-brand-next: #719d27;
+  }
+
+  65% {
+    --vp-c-brand-1: #db7336;
+    --vp-c-brand-next: #679e2e;
+  }
+
+  66.25% {
+    --vp-c-brand-1: #d77630;
+    --vp-c-brand-next: #5da035;
+  }
+
+  67.5% {
+    --vp-c-brand-1: #d17a2a;
+    --vp-c-brand-next: #51a13c;
+  }
+
+  68.75% {
+    --vp-c-brand-1: #cc7d24;
+    --vp-c-brand-next: #44a244;
+  }
+
+  70% {
+    --vp-c-brand-1: #c6811e;
+    --vp-c-brand-next: #34a44b;
+  }
+
+  71.25% {
+    --vp-c-brand-1: #bf8418;
+    --vp-c-brand-next: #1ba553;
+  }
+
+  72.5% {
+    --vp-c-brand-1: #b98713;
+    --vp-c-brand-next: #00a65b;
+  }
+
+  73.75% {
+    --vp-c-brand-1: #b28a0f;
+    --vp-c-brand-next: #00a663;
+  }
+
+  75% {
+    --vp-c-brand-1: #ab8d0c;
+    --vp-c-brand-next: #00a76c;
+  }
+
+  76.25% {
+    --vp-c-brand-1: #a3900b;
+    --vp-c-brand-next: #00a874;
+  }
+
+  77.5% {
+    --vp-c-brand-1: #9c920d;
+    --vp-c-brand-next: #00a87d;
+  }
+
+  78.75% {
+    --vp-c-brand-1: #949510;
+    --vp-c-brand-next: #00a985;
+  }
+
+  80% {
+    --vp-c-brand-1: #8b9715;
+    --vp-c-brand-next: #00a98e;
+  }
+
+  81.25% {
+    --vp-c-brand-1: #83991b;
+    --vp-c-brand-next: #00a996;
+  }
+
+  82.5% {
+    --vp-c-brand-1: #7a9b21;
+    --vp-c-brand-next: #00a99f;
+  }
+
+  83.75% {
+    --vp-c-brand-1: #719d27;
+    --vp-c-brand-next: #00a9a7;
+  }
+
+  85% {
+    --vp-c-brand-1: #679e2e;
+    --vp-c-brand-next: #00a9b0;
+  }
+
+  86.25% {
+    --vp-c-brand-1: #5da035;
+    --vp-c-brand-next: #00a9b8;
+  }
+
+  87.5% {
+    --vp-c-brand-1: #51a13c;
+    --vp-c-brand-next: #00a9c0;
+  }
+
+  88.75% {
+    --vp-c-brand-1: #44a244;
+    --vp-c-brand-next: #00a8c7;
+  }
+
+  90% {
+    --vp-c-brand-1: #34a44b;
+    --vp-c-brand-next: #00a8cf;
+  }
+
+  91.25% {
+    --vp-c-brand-1: #1ba553;
+    --vp-c-brand-next: #00a7d5;
+  }
+
+  92.5% {
+    --vp-c-brand-1: #00a65b;
+    --vp-c-brand-next: #00a6dc;
+  }
+
+  93.75% {
+    --vp-c-brand-1: #00a663;
+    --vp-c-brand-next: #00a6e2;
+  }
+
+  95% {
+    --vp-c-brand-1: #00a76c;
+    --vp-c-brand-next: #00a4e7;
+  }
+
+  96.25% {
+    --vp-c-brand-1: #00a874;
+    --vp-c-brand-next: #00a3ec;
+  }
+
+  97.5% {
+    --vp-c-brand-1: #00a87d;
+    --vp-c-brand-next: #00a2f1;
+  }
+
+  98.75% {
+    --vp-c-brand-1: #00a985;
+    --vp-c-brand-next: #00a0f4;
+  }
+
+  to {
+    --vp-c-brand-1: #00a98e;
+    --vp-c-brand-next: #009ff7;
+  }
+}
+
+.g-gradation-bg {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: 1;
+  background-image: linear-gradient(-45deg, var(--vp-c-brand-1) 30%, var(--vp-c-brand-next));
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 0.8;
+  filter: blur(180px);
+  transition: opacity 1s ease;
+  animation: rainbow 10s linear infinite;
+}
+
+.g-line-text {
+  color: transparent !important;
+  background: linear-gradient(to right, var(--vp-c-brand-1) 30%, var(--vp-c-brand-next));
+  background-clip: text;
+  transition: opacity 1s ease;
+  animation: rainbow 10s linear infinite;
+}
+
+.ant-select-item-option-selected:not(.ant-select-item-option-disabled) {
+  background-color: #f1f1f1 !important;
+}
+
+.g-shadow {
+  box-shadow: 8px 8px 20px rgba(55, 99, 170, 0.1), -8px -8px 20px #fff;
+}
+
+.g-line-before-title {
+  position: relative;
+  font-weight: 500;
+  &:before {
+    position: absolute;
+    top: 3px;
+    bottom: 3px;
+    left: -10px;
+    width: 2px;
+    background-color: #222;
+    content: '';
+  }
+}

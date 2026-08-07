@@ -1,0 +1,24 @@
+/// This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
+model VipType {
+  id            BigInt             @id @unique(map: "id")
+  title         String             @db.VarChar(64)
+  description   String             @db.VarChar(512)
+  equity        Json?
+  price         Float              @db.Float
+  originalPrice Float?             @map("original_price") @db.Float
+  duration      Int
+  sellType      vip_type_sell_type @map("sell_type")
+  optTokens     Int                @default(30000) @map("opt_tokens")
+  checkCount    Int                @default(10) @map("check_count")
+  disabled      Int                @default(0) @db.TinyInt
+  createdAt     DateTime           @default(now()) @map("created_at") @db.DateTime(0)
+  updatedAt     DateTime           @default(now()) @map("updated_at") @db.Timestamp(0)
+
+  @@map("vip_type")
+}
+
+enum vip_type_sell_type {
+  SELL
+  GIFT
+  PRIVATE
+}

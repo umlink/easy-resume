@@ -1,0 +1,12 @@
+model ResumeGroup {
+  id        Int      @id @default(autoincrement())
+  name      String?  @db.VarChar(32)
+  key       String   @db.VarChar(32)
+  icon      String?  @db.VarChar(32)
+  sort      Int?
+  types     Json?
+  createdAt DateTime @default(now()) @map("created_at") @db.Timestamp(0)
+  updatedAt DateTime @default(now()) @map("updated_at") @db.DateTime(0)
+
+  @@map("resume_group")
+}

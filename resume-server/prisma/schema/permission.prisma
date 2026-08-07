@@ -1,0 +1,14 @@
+/// This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
+model permission {
+  id        Int      @id @default(autoincrement())
+  role_id   Int      @map("role_id")
+  name      String   @db.VarChar(32)
+  enum      String   @db.VarChar(32)
+  desc      String   @db.VarChar(128)
+  creatorId Int      @map("creator_id")
+  createdAt DateTime @default(now()) @map("created_at") @db.DateTime(0)
+  updatedAt DateTime @default(now()) @map("updated_at") @db.Timestamp(0)
+
+  @@index([id], map: "permission_id_index")
+  @@index([role_id], map: "permission_role_id_index")
+}

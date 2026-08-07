@@ -1,0 +1,152 @@
+# ============================================================
+# Easy 简历 · 根级 .gitignore
+# 跨子项目通用规则兜底；各子项目特有规则在各自 .gitignore 中维护
+# ============================================================
+
+# ------------------------------
+# OS
+# ------------------------------
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# ------------------------------
+# IDE / 编辑器
+# ------------------------------
+.idea/
+.history/
+.c9/
+.history
+*.sublime-workspace
+*.sublime-project
+.settings/
+.project
+.classpath
+*.launch
+
+# VSCode：保留共享配置，忽略其余
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+!.vscode/*.code-snippets
+
+# ------------------------------
+# AI 协作工具缓存（本地）
+# ------------------------------
+.claude/
+.claude/local/
+.cursor/
+
+# ------------------------------
+# 依赖
+# ------------------------------
+**/node_modules/
+**/bower_components/
+**/.pnp.*
+**/.yarn/cache
+**/.yarn/install-state.gz
+**/.pnpm-store/
+
+# ------------------------------
+# 构建产物
+# ------------------------------
+**/dist/
+**/build/
+**/out/
+**/.next/
+**/.nuxt/
+**/.cache/
+**/.turbo/
+**/.parcel-cache/
+
+# Umi / Max 生成目录（PC / H5）
+**/src/.umi/
+**/src/.umi-production/
+**/src/.umi-test/
+**/.umi/
+**/.umi-production/
+**/.umi-test/
+**/.mfsu/
+
+# Taro 生成目录（MP）
+**/.rn_temp/
+**/deploy_versions/
+
+# TypeScript 增量缓存
+**/*.tsbuildinfo
+**/.swc/
+
+# ------------------------------
+# 环境变量（保留 .env.example 作模板）
+# ------------------------------
+.env
+.env.*
+!.env.example
+!.env.template
+
+# ------------------------------
+# 日志
+# ------------------------------
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+**/nestjs-logs/
+**/pm2-logs/
+logs/
+
+# ------------------------------
+# 临时文件 / 运行时数据
+# ------------------------------
+.tmp
+.temp
+tmp/
+**/tmp/
+pids
+*.pid
+*.seed
+*.pid.lock
+
+# ------------------------------
+# 测试 / 覆盖率
+# ------------------------------
+**/coverage/
+**/.nyc_output/
+**/.jest-cache/
+
+# ------------------------------
+# 诊断报告
+# ------------------------------
+report.[0-9]*.[0-9]*.[0-9]*.[0-9]*.json
+
+# ------------------------------
+# 数据库本地文件（如 sqlite / 临时 dump）
+# ------------------------------
+*.db
+*.sqlite
+*.sqlite3
+**/db-backup/
+
+# Prisma 临时 SQL dump（含真实用户数据风险）
+**/prisma/sql/*.sql
+**/prisma/sql/
+
+# ------------------------------
+# 上传 / 用户文件（后端）
+# ------------------------------
+**/files/tmp/
+**/uploads/tmp/
+
+# ------------------------------
+# 项目级敏感产物（不提交）
+# ------------------------------
+**/sitemap-news.xml
+**/.husky/_/

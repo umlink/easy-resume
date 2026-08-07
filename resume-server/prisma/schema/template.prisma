@@ -1,0 +1,17 @@
+/// This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
+model Template {
+  id        BigInt   @id @unique(map: "id")
+  code      String   @unique(map: "code") @db.VarChar(32)
+  title     String   @db.VarChar(64)
+  content   Json     @map("content")
+  headerImg String?  @map("header_img") @db.VarChar(128)
+  creatorId Int      @map("creator_id")
+  tags      Json
+  useCount  Int      @default(0) @map("use_count")
+  isVip     Int      @default(0) @map("is_vip") @db.TinyInt
+  createdAt DateTime @default(now()) @map("created_at") @db.DateTime(0)
+  updatedAt DateTime @default(now()) @map("updated_at") @db.Timestamp(0)
+
+  @@index([creatorId], map: "resume_template_creator_id_index")
+  @@map("template")
+}

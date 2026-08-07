@@ -1,0 +1,9 @@
+model propose {
+  id        Int      @id @default(autoincrement())
+  email     String   @db.VarChar(128)
+  message   String?  @db.VarChar(1024)
+  createdAt DateTime @default(now()) @map("created_at") @db.DateTime(0)
+  updatedAt DateTime @default(now()) @map("updated_at") @db.Timestamp(0)
+
+  @@index([email], map: "propose_email_index")
+}

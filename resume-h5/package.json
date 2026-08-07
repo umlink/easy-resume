@@ -1,0 +1,49 @@
+{
+  "private": true,
+  "author": "umlink <link_0403@163.com>",
+  "scripts": {
+    "dev": "max dev",
+    "build": "max build",
+    "postinstall": "max setup",
+    "setup": "max setup",
+    "start": "npm run dev",
+    "genapi": "ts-node openapi.config.ts",
+    "upload": "node ./upload.cdn.js",
+    "publish": "scp -r ./dist/index.html root@xxxxx:/usr/share/nginx/h5/",
+    "one-push": "npm run build && npm run upload && npm run publish"
+  },
+  "dependencies": {
+    "@icon-park/react": "^1.4.2",
+    "@umijs/max": "^4.4.11",
+    "@umijs/plugin-antd-mobile": "^1.2.0",
+    "@umijs/preset-react": "^2.1.7",
+    "ahooks": "^3.9.0",
+    "antd-mobile": "^5.39.0",
+    "array-move": "^4.0.0",
+    "axios": "^1.10.0",
+    "dayjs": "^1.11.13",
+    "event-source-polyfill": "^1.0.31",
+    "md-editor-rt": "^6.1.0",
+    "quill": "^2.0.3",
+    "react-beautiful-dnd": "^13.1.1",
+    "showdown": "^2.1.0",
+    "uuid": "^11.1.0"
+  },
+  "devDependencies": {
+    "@types/color": "^4.2.0",
+    "@types/react": "^18.0.33",
+    "@types/react-beautiful-dnd": "^13.1.8",
+    "@types/react-dom": "^18.0.11",
+    "@types/showdown": "^2.0.6",
+    "@umijs/openapi": "^1.13.15",
+    "@umijs/plugins": "^4.4.2",
+    "color": "^5.0.0",
+    "prettier": "^2.8.8",
+    "prettier-plugin-organize-imports": "^3.2.2",
+    "prettier-plugin-packagejson": "^2.4.3",
+    "qiniu": "^7.14.0",
+    "tailwindcss": "^3",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.0.3"
+  }
+}

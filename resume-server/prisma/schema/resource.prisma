@@ -1,0 +1,12 @@
+model resource {
+  id         String   @id @unique(map: "id") @db.VarChar(32)
+  name       String   @db.VarChar(128)
+  url        String   @db.VarChar(128)
+  type       String   @db.VarChar(10)
+  hash       String   @db.VarChar(32)
+  size       Int      @map("size")
+  bucketHash String   @map("bucket_hash") @db.VarChar(64)
+  creatorId  Int      @map("creator_id")
+  createdAt  DateTime @default(now()) @map("created_at") @db.DateTime(0)
+  updatedAt  DateTime @default(now()) @map("updated_at") @db.Timestamp(0)
+}

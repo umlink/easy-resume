@@ -1,0 +1,11 @@
+model aiTask {
+  id        BigInt    @id
+  content   String?   @db.Text
+  userId    BigInt?   @map("user_id")
+  status    Int?      @default(0) @db.TinyInt
+  createdAt DateTime? @default(dbgenerated("(now())")) @map("created_at") @db.DateTime(0)
+  updateAt  DateTime? @default(dbgenerated("(now())")) @map("update_at") @db.DateTime(0)
+
+  @@index([userId], map: "ai_task_user_id_index")
+  @@map("ai_task")
+}

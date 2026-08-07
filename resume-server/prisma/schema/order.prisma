@@ -1,0 +1,18 @@
+/// This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
+model order {
+  id         String    @id @unique(map: "id") @db.VarChar(32)
+  payNo      String?   @map("pay_no") @db.VarChar(32)
+  orderNo    String?   @map("order_no") @db.VarChar(32)
+  openId     String?   @map("open_id") @db.VarChar(32)
+  payBank    String?   @map("pay_bank") @db.VarChar(64)
+  payChannel String?   @map("pay_channel") @db.VarChar(32)
+  userId     BigInt    @map("user_id")
+  price      Float     @db.Float
+  vipTypeId  BigInt    @map("vip_type_id")
+  payType    String    @map("pay_type") @db.VarChar(64)
+  status     Int       @default(0)
+  desc       String?   @db.VarChar(512)
+  overtime   DateTime? @db.DateTime(0)
+  createdAt  DateTime  @default(now()) @map("created_at") @db.DateTime(0)
+  updatedAt  DateTime  @default(now()) @map("updated_at") @db.Timestamp(0)
+}

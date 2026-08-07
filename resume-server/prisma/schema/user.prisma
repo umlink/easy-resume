@@ -1,0 +1,21 @@
+model User {
+  id         Int      @id @unique(map: "id") @default(autoincrement())
+  mpOpenId   String?  @unique(map: "openid") @map("mp_open_id") @db.VarChar(128)
+  email      String?  @db.VarChar(64)
+  avatar     String?  @db.VarChar(128)
+  username   String   @db.VarChar(32)
+  password   String   @db.VarChar(128)
+  disabled   Int      @default(0) @db.TinyInt
+  roles      Json
+  school     String?  @db.VarChar(64)
+  discipline String?  @db.VarChar(64)
+  age        Int?
+  introduce  String?  @db.VarChar(256)
+  profession String?  @db.VarChar(100)
+  hobby      String?  @db.VarChar(100)
+  createdAt  DateTime @default(now()) @map("created_at") @db.DateTime(0)
+  updatedAt  DateTime @default(now()) @map("updated_at") @db.Timestamp(0)
+
+  @@index([mpOpenId], map: "user_mp_open_id_index")
+  @@map("user")
+}
